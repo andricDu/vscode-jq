@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to the "vscode-jq" extension will be documented in this file.
 
+### [0.0.6]
+ - gitrepo added to project.json
+
+### [0.0.5]
+ - Changelog to be updated from now on
+
 ### [0.0.4]
  - Bugfix in tsconfig (needed to include dependencies)
 
