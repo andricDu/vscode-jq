@@ -10,8 +10,7 @@
         "rootDir": "."
     },
     "include": [
-        "src/**/*",
-        "node_modules/node-jq/**/*"
+        "src/**/*"
     ],
     "exclude": [
         "node_modules",
