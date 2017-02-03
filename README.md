@@ -5,7 +5,13 @@ jq plugin for vs code.
 More info coming soon...
 
 ## Features
-... to be added
+ - Apply jq filters and statements to your json files.
+![in action](https://raw.githubusercontent.com/andricDu/elasticsearch-snippets/master/images/action.gif)
+
+
+## Planned Features
+ - Live edit
+ - Apply jq on text selection
 
 ### 0.0.1
 
