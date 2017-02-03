@@ -14,9 +14,13 @@ More info coming soon...
  - Live edit
  - Apply jq on text selection
 
+### 0.0.2
+ - Readme update with demo
+ - License file added
+
 ### 0.0.1
 
- - Initial release.
+ - Initial release
 
 ### License
  - GPLv3

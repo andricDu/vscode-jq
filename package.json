@@ -2,7 +2,7 @@
     "name": "vscode-jq",
     "displayName": "vscode-jq",
     "description": "jq plugin for Visual Studio Code",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "dandric",
     "engines": {
         "vscode": "^1.8.0"
