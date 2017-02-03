@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "vscode-jq" extension will be documented in this file.
 
+### [0.0.8]
+ - fix for mac
+
 ### [0.0.6]
  - gitrepo added to project.json
 
