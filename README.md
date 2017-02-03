@@ -6,7 +6,8 @@ More info coming soon...
 
 ## Features
  - Apply jq filters and statements to your json files.
-![in action](https://raw.githubusercontent.com/andricDu/elasticsearch-snippets/master/images/action.gif)
+
+![in action](https://raw.githubusercontent.com/andricDu/vscode-jq/master/images/action.gif)
 
 
 ## Planned Features
