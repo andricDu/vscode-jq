@@ -9,6 +9,10 @@
         "sourceMap": true,
         "rootDir": "."
     },
+    "include": [
+        "src/**/*",
+        "node_modules/node-jq/**/*"
+    ],
     "exclude": [
         "node_modules",
         ".vscode-test"

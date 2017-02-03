@@ -60,7 +60,6 @@ class JqDialogue {
 
     private executeStatement(statement: string, jsonObj: any) {
         run(statement, jsonObj, { input: 'json', output: 'pretty'}).then( output => {
-            console.log(output);
             let jqOutput = vscode.window.createOutputChannel(OUTPUT_NAME);
             jqOutput.append(output);
             jqOutput.show();
