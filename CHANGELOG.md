@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "vscode-jq" extension will be documented in this file.
 
+### [0.0.14]
+ - removed dependency on node-jq
+ - download jq binary directly from jq site
+
 ### [0.0.8]
  - fix for mac
 
