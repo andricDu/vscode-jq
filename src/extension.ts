@@ -75,12 +75,10 @@ class JqDialogue {
     }
 
     private executeStatement(statement: string, jsonObj: any) {
-        console.log('Executing Statement');
         let jq = child_process.spawn(FILEPATH, [statement]);
         jq.stdin.write(JSON.stringify(jsonObj));
         jq.stdin.end();
         jq.stdout.on('data', data => {
-            console.log('getting data from jq')
             let jqOutput = vscode.window.createOutputChannel(OUTPUT_NAME);
             jqOutput.append(data.toString());
             jqOutput.show();
