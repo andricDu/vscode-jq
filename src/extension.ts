@@ -116,7 +116,9 @@ function ensureBinary() {
 
         return download(uri).then( data => {
             fs.writeFileSync(FILEPATH, data);
-            console.log('Downloaded');
+            if (!/^win/.test(process.platform)) {
+                fs.chmodSync(FILEPATH, '0777');
+            }
         });
     }
     console.log('Already exists!');
