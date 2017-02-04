@@ -18,22 +18,38 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { run } from 'node-jq';
-import { join } from 'path';
+import * as fs from 'fs';
+import * as download from 'download';
+import * as path from 'path';
+import * as child_process from 'child_process';
 
 const OUTPUT_NAME = 'jq output';
+const BINARIES = {
+    'windows': 'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe',
+    'mac': 'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64',
+    'linux': 'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
+};
+const BIN_DIR = path.join(__dirname, '..', 'bin')
+const FILEPATH = path.join(BIN_DIR, /^win/.test(process.platform) ? './jq.exe': './jq');
+
 
 export function activate(context: vscode.ExtensionContext) {
 
     let jq = new JqDialogue();
     let disposable = vscode.commands.registerCommand('extension.jq', () => {
-        jq.newDialogue();
+        jq.entryPoint();
     });
 
     context.subscriptions.push(disposable);
 }
 
 class JqDialogue {
+
+    public entryPoint() {
+        ensureBinary().then( () => {
+            this.newDialogue();
+        });
+    }
 
     public newDialogue() {
 
@@ -59,12 +75,18 @@ class JqDialogue {
     }
 
     private executeStatement(statement: string, jsonObj: any) {
-        run(statement, jsonObj, { input: 'json', output: 'pretty'}).then( output => {
+        console.log('Executing Statement');
+        let jq = child_process.spawn(FILEPATH, [statement]);
+        jq.stdin.write(JSON.stringify(jsonObj));
+        jq.stdin.end();
+        jq.stdout.on('data', data => {
+            console.log('getting data from jq')
             let jqOutput = vscode.window.createOutputChannel(OUTPUT_NAME);
-            jqOutput.append(output);
+            jqOutput.append(data.toString());
             jqOutput.show();
-        }).catch(reason => {
-            this.showError(reason.message);
+        });
+        jq.stderr.on('data', error => {
+            this.showError(error.toString());
         });
     }
 
@@ -77,4 +99,28 @@ class JqDialogue {
 }
 
 export function deactivate() {
+}
+
+function ensureBinary() {
+    if (!fs.existsSync(BIN_DIR)) {
+        fs.mkdirSync(BIN_DIR);
+    }
+
+    if (!fs.existsSync(FILEPATH)) {
+        let uri;
+        if (/^win/.test(process.platform)) {
+            uri = BINARIES.windows;
+        } else if (/^darwin/.test(process.platform)) {
+            uri = BINARIES.mac;
+        } else {
+            uri = BINARIES.linux;
+        }
+
+        return download(uri).then( data => {
+            fs.writeFileSync(FILEPATH, data);
+            console.log('Downloaded');
+        });
+    }
+    console.log('Already exists!');
+    return Promise.resolve();
 }
