@@ -2,9 +2,13 @@
     "name": "vscode-jq",
     "displayName": "vscode-jq",
     "description": "jq plugin for Visual Studio Code",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "publisher": "dandric",
     "icon": "images/icon.png",
+    "keywords": [
+        "json",
+        "jq"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/andricDu/vscode-jq.git"
