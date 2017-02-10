@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "vscode-jq" extension will be documented in this file.
 
+### [0.0.18]
+ - fixed published extension as not to include binary
+
 ### [0.0.15]
  - make jq executable on unix machines.
 
