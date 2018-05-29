@@ -63,8 +63,14 @@ class JqDialogue {
 
         vscode.window.showInputBox(params).then(statement => {
             if (statement) {
+                const json = this.getJson(currentLineOnly);
+                if (!json) {
+                    this.showError('Large file detected. Unable to process.');
+                    return;
+                }
+
                 try {
-                    const jsonObj = JSON.parse(this.getJson(currentLineOnly));
+                    const jsonObj = JSON.parse(json);
                     this.executeStatement(statement, jsonObj);
                 } catch (e) {
                     this.showError(e.message)
@@ -77,6 +83,12 @@ class JqDialogue {
     /** Returns the JSON text from the current document. */
     private getJson(currentLineOnly: boolean): string {
         const editor = vscode.window.activeTextEditor;
+
+        // Check to see if the current document has been hidden from the extension host (large
+        // files).
+        if (!editor) {
+            return undefined;
+        }
 
         if (currentLineOnly) {
             return editor.document.lineAt(editor.selection.active.line).text;
