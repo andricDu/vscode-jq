@@ -16,8 +16,8 @@ More info coming soon...
  - Apply jq on text selection
 
 ## Contributors
-@andricDu
-@safarmer 
+- @andricDu
+- @safarmer
 
 ### License
  - GPLv3
