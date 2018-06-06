@@ -2,7 +2,7 @@
     "name": "vscode-jq",
     "displayName": "vscode-jq",
     "description": "jq plugin for Visual Studio Code",
-    "version": "0.0.18",
+    "version": "0.0.19",
     "publisher": "dandric",
     "icon": "images/icon.png",
     "keywords": [
@@ -20,14 +20,21 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.jq"
+        "onCommand:extension.jq",
+        "onCommand:extension.jql"
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.jq",
-            "title": "jq - JSON Processor"
-        }]
+        "commands": [
+            {
+                "command": "extension.jq",
+                "title": "jq - JSON Processor"
+            },
+            {
+                "command": "extension.jql",
+                "title": "jql - JSON Processor (current line)"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
