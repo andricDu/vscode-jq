@@ -105,11 +105,11 @@ class JqDialogue {
         let jq = child_process.spawn(FILEPATH, [statement]);
         jq.stdin.write(JSON.stringify(jsonObj));
         jq.stdin.end();
+        let jqOutput = vscode.window.createOutputChannel(OUTPUT_NAME);
         jq.stdout.on('data', data => {
-            let jqOutput = vscode.window.createOutputChannel(OUTPUT_NAME);
             jqOutput.append(data.toString());
-            jqOutput.show();
         });
+        jqOutput.show();
         jq.stderr.on('data', error => {
             this.showError(error.toString());
         });
