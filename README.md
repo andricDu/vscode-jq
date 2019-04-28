@@ -16,6 +16,7 @@ jq plugin for vs code.
 ## Contributors
 - @andricDu
 - @safarmer
+- @vk4779
 
 ### License
  - GPLv3
