@@ -25,9 +25,9 @@ import * as child_process from 'child_process';
 
 const OUTPUT_NAME = 'jq output';
 const BINARIES = {
-    'windows': 'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe',
-    'mac': 'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64',
-    'linux': 'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
+    'windows': 'https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe',
+    'mac': 'https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-amd64',
+    'linux': 'https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64'
 };
 const BIN_DIR = path.join(__dirname, '..', 'bin')
 const FILEPATH = path.join(BIN_DIR, /^win/.test(process.platform) ? './jq.exe' : './jq');
